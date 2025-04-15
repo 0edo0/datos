@@ -18,17 +18,20 @@ header {
     box-sizing: border-box;
 }
 
+/* Contenedor para el scroll horizontal */
 div {
-    overflow-x: auto;
-    width: 95%;
-    max-width: 1000px;
+    overflow-x: auto; /* Permite scroll horizontal si la tabla es más ancha que el div */
+    width: 95%; /* Limita el ancho del área de scroll */
+    max-width: 1000px; /* Ancho máximo del área de scroll en pantallas grandes */
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
 table {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 100%;
+    /* width: 100%; <-- Eliminado */
+    max-width: 800px;   /* Ancho máximo de la tabla */
+    margin: 0 auto;     /* Centra la tabla horizontalmente dentro del div */
     background-color: beige;
     text-align: center;
     border-collapse: collapse;
@@ -37,21 +40,30 @@ table {
 th, td {
     border: 1px solid rgb(70, 70, 70);
     padding: 8px;
+    white-space: nowrap; /* Evita que el texto largo rompa en varias líneas y fuerce el scroll */
 }
 
 thead th {
     background-color: rgb(30, 101, 167);
     color: beige;
-    position: sticky;
-    top: 0;
-    z-index: 1;
+    /* position: sticky; <-- Eliminado */
+    /* top: 0; <-- Eliminado */
+    /* z-index: 1; <-- Eliminado */
 }
 
 tbody th {
     background-color: blanchedalmond;
+    /* Asegúrate que los días también tengan nowrap si quieres consistencia */
+    white-space: nowrap;
 }
 
 th:hover {
     background-color: slateblue;
     color: white;
+}
+
+/* Estilo para las celdas de recreo (opcional) */
+td[colspan="1"] {
+   font-style: italic;
+   color: grey;
 }
