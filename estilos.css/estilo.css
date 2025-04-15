@@ -12,7 +12,7 @@ header {
 }
 
 /* Tabla dentro del contenedor */
-.table-container table {
+table {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     width: 100%;           /* Ocupa el espacio del contenedor */
     min-width: 800px;      /* ANCHO MÍNIMO para forzar scroll - ¡AJUSTA ESTE VALOR! */
