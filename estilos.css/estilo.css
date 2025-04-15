@@ -11,26 +11,6 @@ header {
     padding: 10px 0;
 }
 
-main {
-    background-color: rgb(7, 54, 95);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-}
-
-/* Contenedor de la tabla con scroll */
-.table-container {
-    overflow-x: auto; /* Scroll horizontal */
-    max-width: 100%;
-    width: 95%; /* O un poco menos del 100% si quieres márgenes */
-    margin: 0 auto;
-    -webkit-overflow-scrolling: touch;
-     /* Opcional: Si la tabla es muy larga verticalmente y quieres fijar el encabezado superior */
-    /* overflow-y: auto; */
-    /* max-height: 75vh; /* Limita la altura para que el scroll-y funcione */
-}
-
 /* Tabla dentro del contenedor */
 .table-container table {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
