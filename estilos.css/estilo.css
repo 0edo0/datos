@@ -1,76 +1,78 @@
 body {
     background-color: bisque;
-    margin: 0; /* Buena práctica añadir esto para evitar márgenes por defecto */
-    font-family: Georgia, 'Times New Roman', Times, serif; /* Mover fuente por defecto aquí si aplica a todo */
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 header {
     background-color: rgb(7, 54, 95);
     color: aliceblue;
     text-align: center;
-    padding: 10px 0; /* Añadir algo de padding */
-    /* font-family ya está en body o puede quedarse si es específico del header */
+    padding: 10px 0;
 }
 
-/* Regla 'main' combinada y corregida */
 main {
     background-color: rgb(7, 54, 95);
-    /* height: 4%; <-- Eliminado */
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0; /* Añadir padding para separar del header/footer */
+    padding: 20px 0;
 }
 
-/* CSS para el contenedor añadido en la respuesta anterior */
+/* Contenedor de la tabla con scroll */
 .table-container {
-    overflow-x: auto; /* Habilita scroll horizontal si el contenido es más ancho */
-    max-width: 100%; /* Asegura que el contenedor no exceda el ancho de la pantalla */
-    width: 95%; /* Opcional: Darle un poco de margen a los lados en pantallas grandes */
-    margin: 0 auto; /* Centrar el contenedor si usa width % */
-    -webkit-overflow-scrolling: touch; /* Mejora scroll en iOS */
+    overflow-x: auto; /* Scroll horizontal */
+    max-width: 100%;
+    width: 95%; /* O un poco menos del 100% si quieres márgenes */
+    margin: 0 auto;
+    -webkit-overflow-scrolling: touch;
+     /* Opcional: Si la tabla es muy larga verticalmente y quieres fijar el encabezado superior */
+    /* overflow-y: auto; */
+    /* max-height: 75vh; /* Limita la altura para que el scroll-y funcione */
 }
 
-
-/* CSS de la tabla modificado */
-.table-container table { /* Aplicar estilos a la tabla DENTRO del contenedor */
+/* Tabla dentro del contenedor */
+.table-container table {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* width: 90%; */ /* <-- Eliminado */
-    width: 100%; /* <-- Que intente ocupar el 100% del contenedor */
-    min-width: 800px; /* <-- ¡IMPORTANTE! Establece un ancho mínimo. Ajusta este valor según necesites para que tu contenido no se comprima demasiado. */
-    /* max-width: 1000px; */ /* <-- Se puede quitar, el contenedor ya limita el ancho */
+    width: 100%;           /* Ocupa el espacio del contenedor */
+    min-width: 800px;      /* ANCHO MÍNIMO para forzar scroll - ¡AJUSTA ESTE VALOR! */
     background-color: beige;
     text-align: center;
-    border: 1px solid #000000;
-    border-collapse: collapse; /* Mejor apariencia de bordes */
+    border-collapse: collapse; /* Bordes más limpios */
+    /* border: 1px solid #000000; <-- Mejor definir en th, td */
 }
 
+/* Encabezados de columna (Horas) */
 thead th {
     background-color: rgb(30, 101, 167);
     color: beige;
-    padding: 8px 5px; /* Añadir padding */
-    position: sticky; /* Opcional: encabezado fijo al hacer scroll vertical */
-    top: 0;           /* Opcional: encabezado fijo al hacer scroll vertical */
-    z-index: 1;       /* Opcional: para que el encabezado fijo esté por encima */
+    padding: 10px 5px; /* Más padding */
+    border: 1px solid #555;
+    /* Para fijar el encabezado al hacer scroll vertical (opcional) */
+    /* position: sticky; */
+    /* top: 0; */
+    /* z-index: 2; */ /* Debe estar sobre la columna fija */
 }
 
-th, td { /* Aplicar padding también a celdas de datos (td) y encabezados de fila (th en tbody) */
-    padding: 8px 5px;
-    border: 1px solid #555; /* Bordes internos para mejor legibilidad */
-}
-
-tbody th { /* Estilos específicos para los encabezados de fila (Lunes, Martes...) */
-    background-color: blanchedalmond;
-    position: sticky; /* Opcional: Fijar columna de días al hacer scroll horizontal */
-    left: 0;          /* Opcional: Fijar columna de días al hacer scroll horizontal */
-    z-index: 1;       /* Opcional: para que la columna fija esté por encima */
-}
-
-tbody th:hover { /* :hover solo en los encabezados de fila */
-    background-color: slateblue;
-}
-
-/* Es buena idea añadir estilos a las celdas de datos (td) también */
+/* Celdas de datos */
 td {
-    background-color: #fdfdfd; /* Un color ligeramente diferente para datos */
+    background-color: #fdfdfd;
+    padding: 8px 5px;
+    border: 1px solid #555;
+}
+
+/* === LA SOLUCIÓN PRINCIPAL ESTÁ AQUÍ === */
+/* Encabezados de Fila (Días - Lunes, Martes...) */
+tbody th {
+    background-color: blanchedalmond; /* Fondo es importante para sticky */
+    padding: 8px 5px;
+    border: 1px solid #555;
+    position: sticky;   /* <-- Hace que se quede fijo */
+    left: 0;            /* <-- Pégalo al borde izquierdo del contenedor */
+    z-index: 1;         /* <-- Asegura que esté sobre las celdas 'td' al hacer scroll */
+}
+
+/* Estilo hover para los días */
+tbody th:hover {
+    background-color: slateblue;
 }
