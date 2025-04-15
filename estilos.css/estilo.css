@@ -1,58 +1,57 @@
 body {
     background-color: bisque;
+    font-family: sans-serif;
     margin: 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
 }
 
 header {
     background-color: rgb(7, 54, 95);
     color: aliceblue;
     text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
     padding: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* Tabla dentro del contenedor */
+div {
+    overflow-x: auto;
+    width: 95%;
+    max-width: 1000px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 table {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 100%;           /* Ocupa el espacio del contenedor */
-    min-width: 800px;      /* ANCHO MÍNIMO para forzar scroll - ¡AJUSTA ESTE VALOR! */
+    width: 100%;
     background-color: beige;
     text-align: center;
-    border-collapse: collapse; /* Bordes más limpios */
-    /* border: 1px solid #000000; <-- Mejor definir en th, td */
+    border-collapse: collapse;
 }
 
-/* Encabezados de columna (Horas) */
+th, td {
+    border: 1px solid rgb(70, 70, 70);
+    padding: 8px;
+}
+
 thead th {
     background-color: rgb(30, 101, 167);
     color: beige;
-    padding: 10px 5px; /* Más padding */
-    border: 1px solid #555;
-    /* Para fijar el encabezado al hacer scroll vertical (opcional) */
-    /* position: sticky; */
-    /* top: 0; */
-    /* z-index: 2; */ /* Debe estar sobre la columna fija */
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
-/* Celdas de datos */
-td {
-    background-color: #fdfdfd;
-    padding: 8px 5px;
-    border: 1px solid #555;
-}
-
-/* === LA SOLUCIÓN PRINCIPAL ESTÁ AQUÍ === */
-/* Encabezados de Fila (Días - Lunes, Martes...) */
 tbody th {
-    background-color: blanchedalmond; /* Fondo es importante para sticky */
-    padding: 8px 5px;
-    border: 1px solid #555;
-    position: sticky;   /* <-- Hace que se quede fijo */
-    left: 0;            /* <-- Pégalo al borde izquierdo del contenedor */
-    z-index: 1;         /* <-- Asegura que esté sobre las celdas 'td' al hacer scroll */
+    background-color: blanchedalmond;
 }
 
-/* Estilo hover para los días */
-tbody th:hover {
+th:hover {
     background-color: slateblue;
+    color: white;
 }
